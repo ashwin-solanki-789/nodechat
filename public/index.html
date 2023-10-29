@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>GroupChat App</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="js/cookie.js"></script>
+</head>
+
+<body>
+    <div class="join-container">
+        <header class="join-header">
+            <h1><i class="fas fa-smile"></i> GroupChat</h1>
+        </header>
+        <main class="join-main">
+            <form action="chat.html" id="mainForm">
+                <span><strong>Note : </strong><p>Please do not join the same room twice.</p></span>
+                <div class="form-control">
+                    <label for="username">Username</label>
+                    <input type="text" name='username' id="username" value="" readonly />
+                </div>
+                <div class="form-control">
+                    <label for="room">Room</label>
+                    <select name="room" id="room">
+                        <option selected disabled>--Select Room--</option>
+                        <option value="JavaScript">JavaScript</option>
+                        <option value="Python">Python</option>
+                        <option value="PHP">PHP</option>
+                        <option value="C#">C#</option>
+                        <option value="Ruby">Ruby</option>
+                        <option value="Java">Java</option>
+                    </select>
+                </div>
+                <input type="text" id="flg" value="0" readonly style="display: none;"/>
+                <button type="submit" class="btn">Join Chat</button>
+            </form>
+            <!-------------------------------------------------------------------------------------------->
+            <button onclick="customRoom()" id="customRoom" class="btn">Create Custom Room</button>
+            <div style="display: none;" id='customForm'>
+                <span><strong>Note : </strong>
+                    <p>Share the room name and password with your friends and enjoy unlimitated chat.</p>
+                </span>
+                <div class="form-control">
+                    <label for="roomName">Room Name</label>
+                    <input type="text" id="rName" name="rName" value="" readonly>
+                </div>
+                <div class="form-control">
+                    <label for="roomPassword">Password</label>
+                    <input type="password" id="rPassword" name="rPassword" required>
+                </div>
+                <button type="submit" id="createRoom" class="btn">Create Room</button>
+                <button onclick="cancel()" class="btn">Cancel</button>
+            </div>
+            <!-------------------------------------------------------------------------------------------->
+            <button type="submit" onclick="joinRoom()" id="joinRoom" class="btn">Join Custom Room</button>
+            <div style="display: none;" id='joinForm'>
+                <div class="form-control">
+                    <label for="roomName">Room Name</label>
+                    <input type="text" id="jName" name="jName" required>
+                </div>
+                <div class="form-control">
+                    <label for="roomPassword">Password</label>
+                    <input type="password" id="jPassword" name="jPassword" required>
+                </div>
+                <button id='joinChat' class="btn">Join Room</button>
+                <button onclick="cancel()" class="btn">Cancel</button>
+            </div>
+            <!-------------------------------------------------------------------------------------------->
+            <button id="listRoom" class="btn">List Room Created By You</button>
+            <div>
+                <ul id='roomList' style="display: none;">
+
+                </ul>
+            </div>
+            <button type="submit" onclick="logout()" id="logout" class="btn">Logout</button>
+        </main>
+    </div>
+</body>
+
+</html>
